@@ -1,5 +1,5 @@
-`include "ripple_carry_adder.v"
-`timescale 1ns/10ps
+`include "../ripple_carry_adder.v"
+`timescale 1ps/1ps
 
 module ripple_carry_adder_tb;
     
@@ -8,31 +8,31 @@ module ripple_carry_adder_tb;
     // Input signals' declaration
     reg [DATA_WIDTH - 1:0] A_tb;
     reg [DATA_WIDTH - 1:0] B_tb;
-    reg C0_tb;
+    reg Cin_tb;
 
     // Output signals' declaration
     wire CF_tb;
     wire OF_tb;
-    wire S_tb;
+    wire [DATA_WIDTH - 1:0] S_tb;
 
     initial begin
-        C0_tb = 1'b0;
+        Cin_tb = 1'b0;
         
         A_tb = 'b0001;
         B_tb = 'b0100;
-        #2
+        #200
 
         A_tb = 'b1101;
         B_tb = 'b1100;
-        #2
+        #200
 
         A_tb = 'b0101;
         B_tb = 'b0111;
-        #2
+        #200
 
         A_tb = 'b1000;
         B_tb = 'b1011;
-        #2
+        #200
 
         $stop;
     end
@@ -45,7 +45,7 @@ module ripple_carry_adder_tb;
     U_ripple_carry_adder (
         .A(A_tb),
         .B(B_tb),
-        .C0(C0_tb),
+        .Cin(Cin_tb),
 
         .CF(CF_tb),
         .OF(OF_tb),

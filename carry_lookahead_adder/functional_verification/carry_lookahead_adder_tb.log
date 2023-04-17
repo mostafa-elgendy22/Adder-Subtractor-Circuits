@@ -1,0 +1,14 @@
+Start time: 13:48:52 on Apr 17,2023
+vlog carry_lookahead_adder_tb.v 
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module half_adder
+-- Compiling module full_adder
+-- Compiling module ripple_carry_adder
+-- Compiling module carry_generator
+-- Compiling module carry_lookahead_adder
+-- Compiling module carry_lookahead_adder_tb
+
+Top level modules:
+	carry_lookahead_adder_tb
+End time: 13:48:52 on Apr 17,2023, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0

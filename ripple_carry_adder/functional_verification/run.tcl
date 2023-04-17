@@ -6,7 +6,7 @@ exec {*}[auto_execok start] vmap -c
 exec {*}[auto_execok start] vsim work.ripple_carry_adder_tb -do "add wave -position insertpoint  \
     sim:/ripple_carry_adder_tb/U_ripple_carry_adder/A \
     sim:/ripple_carry_adder_tb/U_ripple_carry_adder/B \
-    sim:/ripple_carry_adder_tb/U_ripple_carry_adder/C0 \
+    sim:/ripple_carry_adder_tb/U_ripple_carry_adder/Cin \
     sim:/ripple_carry_adder_tb/U_ripple_carry_adder/S \
     sim:/ripple_carry_adder_tb/U_ripple_carry_adder/CF \
     sim:/ripple_carry_adder_tb/U_ripple_carry_adder/OF; \

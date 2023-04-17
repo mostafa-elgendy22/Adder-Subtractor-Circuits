@@ -5,12 +5,12 @@ module full_adder (
     input B,
     input Cin,
 
+    output P,
+    output G,
     output Cout,
     output S
 );
 
-    wire P;
-    wire G;
     wire C2;
 
     half_adder HA_1 (
