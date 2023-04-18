@@ -1,5 +1,5 @@
 # create a list
-set modules [list "Ripple carry adder" "Carry lookahead adder"]
+set modules [list "Ripple carry adder" "Carry lookahead adder" "Carry Select Adder"]
 set length [llength $modules]
 
 # for loop to run the simulation for different values of the parameter

@@ -3,7 +3,8 @@ import sys
 
 modules_patterns = [
     r'\s*ripple_carry_adder #\(\n\s*\.DATA_WIDTH\(DATA_WIDTH\)',
-    r'\s*carry_lookahead_adder #\(\n\s*\.DATA_WIDTH\(DATA_WIDTH\),\n\s*\.BLOCK_SIZE\(BLOCK_SIZE\)'
+    r'\s*carry_lookahead_adder #\(\n\s*\.DATA_WIDTH\(DATA_WIDTH\),\n\s*\.BLOCK_SIZE\(BLOCK_SIZE\)',
+    r'\s*carry_select_adder #\(\n\s*\.DATA_WIDTH\(DATA_WIDTH\),\n\s*\.BLOCK_SIZE\(BLOCK_SIZE\)'
 ]
 
 module_declarations = [
@@ -13,6 +14,11 @@ module_declarations = [
     
     """
     carry_lookahead_adder #(
+        .DATA_WIDTH(DATA_WIDTH),
+        .BLOCK_SIZE(BLOCK_SIZE)""",
+
+    """
+    carry_select_adder #(
         .DATA_WIDTH(DATA_WIDTH),
         .BLOCK_SIZE(BLOCK_SIZE)"""
     ]

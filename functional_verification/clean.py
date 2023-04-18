@@ -25,3 +25,7 @@ if os.path.exists('work'):
 
 if os.path.exists('__pycache__'):
     shutil.rmtree('__pycache__', ignore_errors=True)
+
+if os.path.exists('output_files'):
+    shutil.rmtree('output_files', ignore_errors=True)
+    os.mkdir('output_files')

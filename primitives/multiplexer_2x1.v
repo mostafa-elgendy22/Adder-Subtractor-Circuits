@@ -1,9 +1,13 @@
-module multiplexer_2x1 (
-    input IN0,
-    input IN1,
-    input selection,
+module multiplexer_2x1 #(
+    parameter DATA_WIDTH = 1
+)
+(
+    input [DATA_WIDTH - 1:0] IN0,
+    input [DATA_WIDTH - 1:0] IN1,
+    input select,
 
-    output OUT
+    output [DATA_WIDTH - 1:0] OUT
 );
-    assign OUT = selection ? IN1 : IN0;
+    assign OUT = select ? IN1 : IN0;
+
 endmodule
