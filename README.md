@@ -105,20 +105,23 @@ The generate and propagate logic are produced from the full adder (they are actu
 
 For a 4-bit ripple carry adder:
 
-![equations](https://latex.codecogs.com/png.image?%5Cinline%20%5Cdpi%7B110%7D%5Cbg%7Bwhite%7D%5C%5C%5C%5CC_%7B0%7D%20=%20C_%7Bin%7D%20%5Ctext%20%7B(initial%20input%20carry)%7D%5C%5C%5C%5CC_%7B1%7D%20=%20G_%7B0%7D%20&plus;%20P_%7B0%7DC_%7B0%7D%5C%5C%5C%5CC_%7B2%7D%20=%20G_%7B1%7D%20&plus;%20P_%7B1%7DC_%7B1%7D%20=%20G_%7B1%7D%20&plus;%20P_%7B1%7D(G_%7B0%7D%20&plus;%20P_%7B0%7DC_%7B0%7D)%20=%20G_%7B1%7D%20&plus;%20P_%7B1%7DG_%7B0%7D%20&plus;%20P_%7B1%7DP_%7B0%7DC_%7B0%7D%5C%5C%5C%5CC_%7B3%7D%20=%20G_%7B2%7D%20&plus;%20P_%7B2%7DC_%7B2%7D%20=%20G_%7B2%7D%20&plus;%20P_%7B2%7D(G_%7B1%7D%20&plus;%20P_%7B1%7DG_%7B0%7D%20&plus;%20P_%7B1%7DP_%7B0%7DC_%7B0%7D)%20=%20G_%7B2%7D%20&plus;%20P_%7B2%7DG_%7B1%7D%20&plus;%20P_%7B2%7DP_%7B1%7DG_%7B0%7D%20&plus;%20P_%7B2%7DP_%7B1%7DP_%7B0%7DC_%7B0%7D%5C%5C%5C%5CC_%7B4%7D%20=%20G_%7B3%7D%20&plus;%20P_%7B3%7DC_%7B3%7D%20=%20G_%7B3%7D%20&plus;%20P_%7B3%7D(G_%7B2%7D%20&plus;%20P_%7B2%7DG_%7B1%7D%20&plus;%20P_%7B2%7DP_%7B1%7DG_%7B0%7D%20&plus;%20P_%7B2%7DP_%7B1%7DP_%7B0%7DC_%7B0%7D)%20=%20G_%7B3%7D%20&plus;%20P_%7B3%7DG_%7B2%7D%20&plus;%20P_%7B3%7DP_%7B2%7DG_%7B1%7D%20&plus;%20P_%7B3%7DP_%7B2%7DP_%7B1%7DG_%7B0%7D%20&plus;%20P_%7B3%7DP_%7B2%7DP_%7B1%7DP_%7B0%7DC_%7B0%7D%5C%5C)
+<!-- ![equations](https://latex.codecogs.com/png.image?%5Cinline%20%5Cdpi%7B110%7D%5Cbg%7Bwhite%7D%5C%5C%5C%5CC_%7B0%7D%20=%20C_%7Bin%7D%20%5Ctext%20%7B(initial%20input%20carry)%7D%5C%5C%5C%5CC_%7B1%7D%20=%20G_%7B0%7D%20&plus;%20P_%7B0%7DC_%7B0%7D%5C%5C%5C%5CC_%7B2%7D%20=%20G_%7B1%7D%20&plus;%20P_%7B1%7DC_%7B1%7D%20=%20G_%7B1%7D%20&plus;%20P_%7B1%7D(G_%7B0%7D%20&plus;%20P_%7B0%7DC_%7B0%7D)%20=%20G_%7B1%7D%20&plus;%20P_%7B1%7DG_%7B0%7D%20&plus;%20P_%7B1%7DP_%7B0%7DC_%7B0%7D%5C%5C%5C%5CC_%7B3%7D%20=%20G_%7B2%7D%20&plus;%20P_%7B2%7DC_%7B2%7D%20=%20G_%7B2%7D%20&plus;%20P_%7B2%7D(G_%7B1%7D%20&plus;%20P_%7B1%7DG_%7B0%7D%20&plus;%20P_%7B1%7DP_%7B0%7DC_%7B0%7D)%20=%20G_%7B2%7D%20&plus;%20P_%7B2%7DG_%7B1%7D%20&plus;%20P_%7B2%7DP_%7B1%7DG_%7B0%7D%20&plus;%20P_%7B2%7DP_%7B1%7DP_%7B0%7DC_%7B0%7D%5C%5C%5C%5CC_%7B4%7D%20=%20G_%7B3%7D%20&plus;%20P_%7B3%7DC_%7B3%7D%20=%20G_%7B3%7D%20&plus;%20P_%7B3%7D(G_%7B2%7D%20&plus;%20P_%7B2%7DG_%7B1%7D%20&plus;%20P_%7B2%7DP_%7B1%7DG_%7B0%7D%20&plus;%20P_%7B2%7DP_%7B1%7DP_%7B0%7DC_%7B0%7D)%20=%20G_%7B3%7D%20&plus;%20P_%7B3%7DG_%7B2%7D%20&plus;%20P_%7B3%7DP_%7B2%7DG_%7B1%7D%20&plus;%20P_%7B3%7DP_%7B2%7DP_%7B1%7DG_%7B0%7D%20&plus;%20P_%7B3%7DP_%7B2%7DP_%7B1%7DP_%7B0%7DC_%7B0%7D%5C%5C) -->
 
-<!-- $$
+$$
 C_{0} = C_{in} \text {(initial input carry)}
-\\
+$$
+$$
 C_{1} = G_{0} + P_{0}C_{0}
-\\
+$$
+$$
 C_{2} = G_{1} + P_{1}C_{1} = G_{1} + P_{1}(G_{0} + P_{0}C_{0}) = G_{1} + P_{1}G_{0} + P_{1}P_{0}C_{0}
-\\
+$$
+$$
 C_{3} = G_{2} + P_{2}C_{2} = G_{2} + P_{2}(G_{1} + P_{1}G_{0} + P_{1}P_{0}C_{0}) = G_{2} + P_{2}G_{1} + P_{2}P_{1}G_{0} + P_{2}P_{1}P_{0}C_{0}
-\\
-\\
+$$
+$$
 C_{4} = G_{3} + P_{3}C_{3} = G_{3} + P_{3}(G_{2} + P_{2}G_{1} + P_{2}P_{1}G_{0} + P_{2}P_{1}P_{0}C_{0}) = G_{3} + P_{3}G_{2} + P_{3}P_{2}G_{1} + P_{3}P_{2}P_{1}G_{0} + P_{3}P_{2}P_{1}P_{0}C_{0}
-$$ -->
+$$
 It is obvious that all the carry bits can be evaluated once the two operands A and B (because G's and P's are functions in the operands) and the initial carry Cin are ready. But note that the logic that evaluates the carry bits becomes more complicated by increasing the number of full adders in a stage. By generalization on the previous equations, all carry signals can be generated given the previous carry bit and the G's and the P's.
 
 The main building blocks of this adder are ripple carry adders and carry generators. The adder is divided into sections of a certain size (it is parametrized with the parameter `BLOCK_SIZE`). The number of the ripple carry adder and carry generator blocks is (DATA_WIDTH / BLOCK_SIZE). The carry generator calculates the carry bit for the next carry generator block and the next ripple carry adder block given the carry from the previous stage. Each ripple carry adder block evaluates its portion of the sum given only the initial carry for the block (the internal carries are propagated as the normal operation of the ripple carry adder). If the BLOCK_SIZE is small enough (rule of thumb: BLOCK_SIZE <= 4), the carry generator will be very fast (because the logic isn't very dense). This following figure shows the block diagram of carry lookahead adder with DATA_WIDTH = 16, BLOCK_SIZE = 4, and hence the number of ripple carry adder and carry generator blocks is 4.
