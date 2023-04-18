@@ -154,7 +154,7 @@ The carry generator module is parametrized to support any numeber of adders per 
 
 Note that the missing cells (wires) are not used.
 
-The following figure shows the output waveform of a 4-bit ripple carry adder. Note that at some operations, overflow occured and overflow flag is asserted which justifies the wrong answers in signed operations.
+The following figure shows the output waveform of a 4-bit carry lookahead adder. Note that at some operations, overflow occured and overflow flag is asserted which justifies the wrong answers in signed operations.
 
 <img src="docs/screenshots/carry_lookahead_adder_tb.PNG">
 
@@ -168,7 +168,7 @@ The following figure shows the block diagram of a 16-bit CSA with BLOCK_SIZE = 4
 
 <img src="docs/screenshots/carry_select_adder.PNG">
 
-The following figure shows the output waveform of a 4-bit ripple carry adder. Note that at some operations, overflow occured and overflow flag is asserted which justifies the wrong answers in signed operations.
+The following figure shows the output waveform of a 4-bit carry select adder. Note that at some operations, overflow occured and overflow flag is asserted which justifies the wrong answers in signed operations.
 
 <img src="docs/screenshots/carry_select_adder_tb.PNG">
 
