@@ -3,7 +3,7 @@
 
 module carry_lookahead_adder_tb;
     
-    localparam DATA_WIDTH = 16;
+    localparam DATA_WIDTH = 4;
     localparam BLOCK_SIZE = 1;
 
     // Input signals' declaration
@@ -19,20 +19,20 @@ module carry_lookahead_adder_tb;
     initial begin
         Cin_tb = 1'b0;
         
-        A_tb = 'hF077;
-        B_tb = 'h7777;
+        A_tb = 'b0001;
+        B_tb = 'b0100;
         #200
 
-        A_tb = 'h6077;
-        B_tb = 'h6753;
+        A_tb = 'b1101;
+        B_tb = 'b1100;
         #200
 
-        A_tb = 'hF997;
-        B_tb = 'h1111;
+        A_tb = 'b0101;
+        B_tb = 'b0111;
         #200
 
-        A_tb = 'h8AA7;
-        B_tb = 'h8111;
+        A_tb = 'b1000;
+        B_tb = 'b1011;
         #200
 
         $stop;

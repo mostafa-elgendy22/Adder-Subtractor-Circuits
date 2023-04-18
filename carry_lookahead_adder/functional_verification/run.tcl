@@ -10,9 +10,9 @@ exec {*}[auto_execok start] vsim work.carry_lookahead_adder_tb -do "add wave -po
     sim:/carry_lookahead_adder_tb/U_carry_lookahead_adder/S \
     sim:/carry_lookahead_adder_tb/U_carry_lookahead_adder/CF \
     sim:/carry_lookahead_adder_tb/U_carry_lookahead_adder/OF; \
-    radix signal sim:/carry_lookahead_adder_tb/U_carry_lookahead_adder/A Hexadecimal; \
-    radix signal sim:/carry_lookahead_adder_tb/U_carry_lookahead_adder/B Hexadecimal; \
-    radix signal sim:/carry_lookahead_adder_tb/U_carry_lookahead_adder/S Hexadecimal; \
+    radix signal sim:/carry_lookahead_adder_tb/U_carry_lookahead_adder/A Signed; \
+    radix signal sim:/carry_lookahead_adder_tb/U_carry_lookahead_adder/B Signed; \
+    radix signal sim:/carry_lookahead_adder_tb/U_carry_lookahead_adder/S Signed; \
     run -all"
 
 
