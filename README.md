@@ -13,6 +13,8 @@ Parametrized Verilog implementation of different architectures of adder / subtra
 7. [Functional Verification](#functional-verification)
 8. [References](#references)
 
+<hr>
+
 ## Parameter Description
 
 All the implemented adders are parametrized using the following parameters.
@@ -25,7 +27,7 @@ All the implemented adders are parametrized using the following parameters.
     </tr>
     <tr>
         <td>DATA_WIDTH</td>
-        <td>The size of the two operands being added</td>
+        <td>The size of the two operands being added.</td>
         <td align="center">16</td>
     </tr>
     <tr>
@@ -35,9 +37,11 @@ All the implemented adders are parametrized using the following parameters.
     </tr>
 </table>
 
+<hr>
+
 ## Port Description
 
-All the implemented adders have the same IO interface but there may some ports that are specific to a certain architecture (such as the generate and propagate signals).
+All the implemented adders have the same IO interface but there may be some ports that are specific to a certain architecture (such as the generate and propagate signals).
 
 <table>
     <tr>
@@ -84,6 +88,8 @@ All the implemented adders have the same IO interface but there may some ports t
     </tr>
 </table>
 
+<hr>
+
 ## Ripple Carry Adder
 
 It is the most primitive multi-bit adder. It is composed of full adders connected serially in a chain. The carry-out from each adder is connected to the carry-in of the next adder. The following figure shows a 4-bit ripple carry adder.
@@ -93,6 +99,8 @@ It is the most primitive multi-bit adder. It is composed of full adders connecte
 The following figure shows the output waveform of a 4-bit ripple carry adder. Note that at some operations, overflow occured and overflow flag is asserted which justifies the wrong answers in signed operations.
 
 <img src="docs/screenshots/ripple_carry_adder_tb.PNG">
+
+<hr>
 
 ## Carry Lookahead Adder
 
@@ -126,8 +134,6 @@ The generate and propagate logic are produced from the full adder (they are actu
 <img src="docs/screenshots/generate_propagate_logic.PNG">
 
 For a 4-bit ripple carry adder:
-
-<!-- ![equations](https://latex.codecogs.com/png.image?%5Cinline%20%5Cdpi%7B110%7D%5Cbg%7Bwhite%7D%5C%5C%5C%5CC_%7B0%7D%20=%20C_%7Bin%7D%20%5Ctext%20%7B(initial%20input%20carry)%7D%5C%5C%5C%5CC_%7B1%7D%20=%20G_%7B0%7D%20+%20P_%7B0%7DC_%7B0%7D%5C%5C%5C%5CC_%7B2%7D%20=%20G_%7B1%7D%20+%20P_%7B1%7DC_%7B1%7D%20=%20G_%7B1%7D%20+%20P_%7B1%7D(G_%7B0%7D%20+%20P_%7B0%7DC_%7B0%7D)%20=%20G_%7B1%7D%20+%20P_%7B1%7DG_%7B0%7D%20+%20P_%7B1%7DP_%7B0%7DC_%7B0%7D%5C%5C%5C%5CC_%7B3%7D%20=%20G_%7B2%7D%20+%20P_%7B2%7DC_%7B2%7D%20=%20G_%7B2%7D%20+%20P_%7B2%7D(G_%7B1%7D%20+%20P_%7B1%7DG_%7B0%7D%20+%20P_%7B1%7DP_%7B0%7DC_%7B0%7D)%20=%20G_%7B2%7D%20+%20P_%7B2%7DG_%7B1%7D%20+%20P_%7B2%7DP_%7B1%7DG_%7B0%7D%20+%20P_%7B2%7DP_%7B1%7DP_%7B0%7DC_%7B0%7D%5C%5C%5C%5CC_%7B4%7D%20=%20G_%7B3%7D%20+%20P_%7B3%7DC_%7B3%7D%20=%20G_%7B3%7D%20+%20P_%7B3%7D(G_%7B2%7D%20+%20P_%7B2%7DG_%7B1%7D%20+%20P_%7B2%7DP_%7B1%7DG_%7B0%7D%20+%20P_%7B2%7DP_%7B1%7DP_%7B0%7DC_%7B0%7D)%20=%20G_%7B3%7D%20+%20P_%7B3%7DG_%7B2%7D%20+%20P_%7B3%7DP_%7B2%7DG_%7B1%7D%20+%20P_%7B3%7DP_%7B2%7DP_%7B1%7DG_%7B0%7D%20+%20P_%7B3%7DP_%7B2%7DP_%7B1%7DP_%7B0%7DC_%7B0%7D%5C%5C) -->
 
 $$
 C_{0} = C_{in} \text {(initial input carry)}
@@ -175,6 +181,8 @@ The following figure shows the output waveform of a 4-bit carry lookahead adder.
 
 <img src="docs/screenshots/carry_lookahead_adder_tb.PNG">
 
+<hr>
+
 ## Carry Select Adder
 
 The carry select adder (CSA) is designed to minimize the delay time required to produce the sum output. The adder is divided into sections of a certain size (it is parametrized with the parameter `BLOCK_SIZE`). Each section consists of two ripple carry adders, one have the carry-in equals to one and the other have the carry-in equals zero. Then the actual carry from the previous stage is used to select the correct sum and carry bits.
@@ -188,6 +196,8 @@ The following figure shows the block diagram of a 16-bit CSA with BLOCK_SIZE = 4
 The following figure shows the output waveform of a 4-bit carry select adder. Note that at some operations, overflow occured and overflow flag is asserted which justifies the wrong answers in signed operations.
 
 <img src="docs/screenshots/carry_select_adder_tb.PNG">
+
+<hr>
 
 ## Carry Bypass Adder
 
@@ -210,6 +220,7 @@ $$
 Note that the carry notations (indices) in the diagram is not the same as the ones used in the equations.
 
 From the equation of `C5`, we can conclude the following:
+<br>
 If:
 
 $$
@@ -255,9 +266,14 @@ The following figure shows the output waveform of a 4-bit carry bypass adder. No
 
 <img src="docs/screenshots/carry_bypass_adder_tb.PNG">
 
+<hr>
+
 ## Functional Verification
 
 All the implemented adders are verified through a generic testbench and a Python environment. The Python environment generates a huge number of test cases (input operands) along with their sum, carry flags, and overflow flags. It also runs the generic testbench several times where each time a single adder architecture is instantiated and tested. The testbench produces the sum, carry flags, overflow flags of all the test cases. Then the Python environment compares all the results with the expected results and confirms that the adder is functioning correctly. The implementation details of the functional verification module can be found at `functional_verification` directory. The verification module can be run by using the `functional_verification/run.tcl` script.
+
+
+<hr>
 
 ## References
 
@@ -265,6 +281,6 @@ All the implemented adders are verified through a generic testbench and a Python
     <li><a href="https://www.sciencedirect.com/book/9780128000564/digital-design-and-computer-architecture" target="_blank">Digital Design and Computer Architecture</a></li>
     <li><a href="https://www.amazon.com/Digital-Design-Introduction-Verilog-HDL/dp/0132774208" target="_blank">Digital Design: With an Introduction to the Verilog HDL</a></li>
     <li><a href="https://link.springer.com/book/10.1007/978-3-030-37195-1" target="_blank">Handbook of Digital CMOS Technology, Circuits, and Systems</a></li>
-    <li><a href="" target="_blank">Electron Tube</a></li>
+    <li><a href="https://www.youtube.com/@electrontube4284/playlists" target="_blank">Electron Tube</a></li>
     <li><a href="https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/pages/c8/c8s2/c8s2v2/" target="_blank">MIT OCW</a></li>
 </ol>
