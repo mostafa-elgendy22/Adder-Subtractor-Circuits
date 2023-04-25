@@ -13,7 +13,6 @@ Parametrized Verilog implementation of different architectures of adder / subtra
 7. [Functional Verification](#functional-verification)
 8. [References](#references)
 
-
 ## Parameter Description
 
 All the implemented adders are parametrized using the following parameters.
@@ -35,7 +34,6 @@ All the implemented adders are parametrized using the following parameters.
         <td align="center">4</td>
     </tr>
 </table>
-
 
 ## Port Description
 
@@ -127,12 +125,9 @@ The generate and propagate logic are produced from the full adder (they are actu
 
 <img src="docs/screenshots/generate_propagate_logic.PNG">
 
-
-
 For a 4-bit ripple carry adder:
 
-<!-- ![equations](https://latex.codecogs.com/png.image?%5Cinline%20%5Cdpi%7B110%7D%5Cbg%7Bwhite%7D%5C%5C%5C%5CC_%7B0%7D%20=%20C_%7Bin%7D%20%5Ctext%20%7B(initial%20input%20carry)%7D%5C%5C%5C%5CC_%7B1%7D%20=%20G_%7B0%7D%20&plus;%20P_%7B0%7DC_%7B0%7D%5C%5C%5C%5CC_%7B2%7D%20=%20G_%7B1%7D%20&plus;%20P_%7B1%7DC_%7B1%7D%20=%20G_%7B1%7D%20&plus;%20P_%7B1%7D(G_%7B0%7D%20&plus;%20P_%7B0%7DC_%7B0%7D)%20=%20G_%7B1%7D%20&plus;%20P_%7B1%7DG_%7B0%7D%20&plus;%20P_%7B1%7DP_%7B0%7DC_%7B0%7D%5C%5C%5C%5CC_%7B3%7D%20=%20G_%7B2%7D%20&plus;%20P_%7B2%7DC_%7B2%7D%20=%20G_%7B2%7D%20&plus;%20P_%7B2%7D(G_%7B1%7D%20&plus;%20P_%7B1%7DG_%7B0%7D%20&plus;%20P_%7B1%7DP_%7B0%7DC_%7B0%7D)%20=%20G_%7B2%7D%20&plus;%20P_%7B2%7DG_%7B1%7D%20&plus;%20P_%7B2%7DP_%7B1%7DG_%7B0%7D%20&plus;%20P_%7B2%7DP_%7B1%7DP_%7B0%7DC_%7B0%7D%5C%5C%5C%5CC_%7B4%7D%20=%20G_%7B3%7D%20&plus;%20P_%7B3%7DC_%7B3%7D%20=%20G_%7B3%7D%20&plus;%20P_%7B3%7D(G_%7B2%7D%20&plus;%20P_%7B2%7DG_%7B1%7D%20&plus;%20P_%7B2%7DP_%7B1%7DG_%7B0%7D%20&plus;%20P_%7B2%7DP_%7B1%7DP_%7B0%7DC_%7B0%7D)%20=%20G_%7B3%7D%20&plus;%20P_%7B3%7DG_%7B2%7D%20&plus;%20P_%7B3%7DP_%7B2%7DG_%7B1%7D%20&plus;%20P_%7B3%7DP_%7B2%7DP_%7B1%7DG_%7B0%7D%20&plus;%20P_%7B3%7DP_%7B2%7DP_%7B1%7DP_%7B0%7DC_%7B0%7D%5C%5C) -->
-
+<!-- ![equations](https://latex.codecogs.com/png.image?%5Cinline%20%5Cdpi%7B110%7D%5Cbg%7Bwhite%7D%5C%5C%5C%5CC_%7B0%7D%20=%20C_%7Bin%7D%20%5Ctext%20%7B(initial%20input%20carry)%7D%5C%5C%5C%5CC_%7B1%7D%20=%20G_%7B0%7D%20+%20P_%7B0%7DC_%7B0%7D%5C%5C%5C%5CC_%7B2%7D%20=%20G_%7B1%7D%20+%20P_%7B1%7DC_%7B1%7D%20=%20G_%7B1%7D%20+%20P_%7B1%7D(G_%7B0%7D%20+%20P_%7B0%7DC_%7B0%7D)%20=%20G_%7B1%7D%20+%20P_%7B1%7DG_%7B0%7D%20+%20P_%7B1%7DP_%7B0%7DC_%7B0%7D%5C%5C%5C%5CC_%7B3%7D%20=%20G_%7B2%7D%20+%20P_%7B2%7DC_%7B2%7D%20=%20G_%7B2%7D%20+%20P_%7B2%7D(G_%7B1%7D%20+%20P_%7B1%7DG_%7B0%7D%20+%20P_%7B1%7DP_%7B0%7DC_%7B0%7D)%20=%20G_%7B2%7D%20+%20P_%7B2%7DG_%7B1%7D%20+%20P_%7B2%7DP_%7B1%7DG_%7B0%7D%20+%20P_%7B2%7DP_%7B1%7DP_%7B0%7DC_%7B0%7D%5C%5C%5C%5CC_%7B4%7D%20=%20G_%7B3%7D%20+%20P_%7B3%7DC_%7B3%7D%20=%20G_%7B3%7D%20+%20P_%7B3%7D(G_%7B2%7D%20+%20P_%7B2%7DG_%7B1%7D%20+%20P_%7B2%7DP_%7B1%7DG_%7B0%7D%20+%20P_%7B2%7DP_%7B1%7DP_%7B0%7DC_%7B0%7D)%20=%20G_%7B3%7D%20+%20P_%7B3%7DG_%7B2%7D%20+%20P_%7B3%7DP_%7B2%7DG_%7B1%7D%20+%20P_%7B3%7DP_%7B2%7DP_%7B1%7DG_%7B0%7D%20+%20P_%7B3%7DP_%7B2%7DP_%7B1%7DP_%7B0%7DC_%7B0%7D%5C%5C) -->
 
 $$
 C_{0} = C_{in} \text {(initial input carry)}
@@ -142,21 +137,17 @@ $$
 C_{1} = G_{0} + P_{0}C_{0}
 $$
 
-
 $$
 C_{2} = G_{1} + P_{1}C_{1} = G_{1} + P_{1}(G_{0} + P_{0}C_{0}) = G_{1} + P_{1}G_{0} + P_{1}P_{0}C_{0}
 $$
-
 
 $$
 C_{3} = G_{2} + P_{2}C_{2} = G_{2} + P_{2}(G_{1} + P_{1}G_{0} + P_{1}P_{0}C_{0}) = G_{2} + P_{2}G_{1} + P_{2}P_{1}G_{0} + P_{2}P_{1}P_{0}C_{0}
 $$
 
-
 $$
 C_{4} = G_{3} + P_{3}C_{3} = G_{3} + P_{3}(G_{2} + P_{2}G_{1} + P_{2}P_{1}G_{0} + P_{2}P_{1}P_{0}C_{0}) = G_{3} + P_{3}G_{2} + P_{3}P_{2}G_{1} + P_{3}P_{2}P_{1}G_{0} + P_{3}P_{2}P_{1}P_{0}C_{0}
 $$
-
 
 It is obvious that all the carry bits can be evaluated once the two operands A and B (because G's and P's are functions in the operands) and the initial carry Cin are ready. But note that the logic that evaluates the carry bits becomes more complicated by increasing the number of full adders in a stage. By generalization on the previous equations, all carry signals can be generated given the previous carry bit and the G's and the P's.
 
@@ -199,11 +190,62 @@ The following figure shows the output waveform of a 4-bit carry select adder. No
 <img src="docs/screenshots/carry_select_adder_tb.PNG">
 
 ## Carry Bypass Adder
+
 A carry-bypass adder (also known as a carry-skip adder) is an adder implementation that improves on the delay of a ripple-carry adder with little effort compared to other adders. The following figure shows the structure of one block whose size equals five (i.e. BLOCK_SIZE = 5) that builds the carry-bypass adder.
 
 <img src="docs/screenshots/carry_bypass_adder_1.PNG">
 
-The final carry-out of the chain is multiplexed between two cases. If all five-bit position propagates are true, then the entire five-bit adder is propagating. In this case, the carry-out is chosen to be the carry-in. In any other case, the carry-out is chosen to be the output of the five-bit ripple carry adder. This adder is called a carry-bypass adder since there is a possibility that the carry will bypass the entire adder to become the carry-out.
+We have reached the following formula for a 4-bit ripple carry adder in the analysis of the carry lookahead adder:
+
+$$
+C_{4} = G_{3} + P_{3}C_{3} = G_{3} + P_{3}(G_{2} + P_{2}G_{1} + P_{2}P_{1}G_{0} + P_{2}P_{1}P_{0}C_{0}) = G_{3} + P_{3}G_{2} + P_{3}P_{2}G_{1} + P_{3}P_{2}P_{1}G_{0} + P_{3}P_{2}P_{1}P_{0}C_{0}
+$$
+
+Then,
+
+$$
+C_{5} = G_{4} + P_{4}C_{4} = G_{4} + P_{4}(G_{3} + P_{3}G_{2} + P_{3}P_{2}G_{1} + P_{3}P_{2}P_{1}G_{0} + P_{3}P_{2}P_{1}P_{0}C_{0}) = G_{4} + P_{4}G_{3} + P_{4}P_{3}G_{2} + P_{4}P_{3}P_{2}G_{1} + P_{4}P_{3}P_{2}P_{1}G_{0} + P_{4}P_{3}P_{2}P_{1}P_{0}C_{0}
+$$
+
+Note that the carry notations (indices) in the diagram is not the same as the ones used in the equations.
+
+From the equation of `C5`, we can conclude the following:
+If:
+
+$$
+P_{4}P_{3}P_{2}P_{1}P_{0} = 1
+$$
+
+This means that:
+
+$$
+G_{4} = 0 \text{, because }P_{4} = 1
+$$
+
+$$
+G_{3} = 0 \text{, because }P_{3} = 1
+$$
+
+$$
+G_{2} = 0 \text{, because }P_{2} = 1
+$$
+
+$$
+G_{1} = 0 \text{, because }P_{1} = 1
+$$
+
+$$
+G_{0} = 0 \text{, because }P_{0} = 1
+$$
+
+Then by substitution in the equation of `C5`:
+
+$$
+C_{5} = C_{0}
+$$
+
+
+This justifies the previously shown block diagram of the carry-bypass adder block where the final carry-out of the chain is multiplexed between two cases. If all five-bit position propagates are true, then the entire five-bit adder is propagating. In this case, the carry-out is chosen to be the carry-in. In any other case, the carry-out is chosen to be the output of the five-bit ripple carry adder. This adder is called a carry-bypass adder since there is a possibility that the carry will bypass the entire adder to become the carry-out.
 
 The following figure shows a 20-bit carry-bypass adder with BLOCK_SIZE = 5.
 
@@ -220,8 +262,9 @@ All the implemented adders are verified through a generic testbench and a Python
 ## References
 
 <ol>
-    <li><a href="https://www.sciencedirect.com/book/9780128000564/digital-design-and-computer-architecture">Digital Design and Computer Architecture</a></li>
-    <li><a href="https://www.amazon.com/Digital-Design-Introduction-Verilog-HDL/dp/0132774208">Digital Design: With an Introduction to the Verilog HDL</a></li>
-    <li><a href="https://link.springer.com/book/10.1007/978-3-030-37195-1">Handbook of Digital CMOS Technology, Circuits, and Systems</a></li>
-    <li><a href="https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/pages/c8/c8s2/c8s2v2/">MIT OCW</a></li>
+    <li><a href="https://www.sciencedirect.com/book/9780128000564/digital-design-and-computer-architecture" target="_blank">Digital Design and Computer Architecture</a></li>
+    <li><a href="https://www.amazon.com/Digital-Design-Introduction-Verilog-HDL/dp/0132774208" target="_blank">Digital Design: With an Introduction to the Verilog HDL</a></li>
+    <li><a href="https://link.springer.com/book/10.1007/978-3-030-37195-1" target="_blank">Handbook of Digital CMOS Technology, Circuits, and Systems</a></li>
+    <li><a href="" target="_blank">Electron Tube</a></li>
+    <li><a href="https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/pages/c8/c8s2/c8s2v2/" target="_blank">MIT OCW</a></li>
 </ol>
