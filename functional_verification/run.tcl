@@ -1,5 +1,7 @@
+exec python input_generator.py
+
 # create a list
-set modules [list "Ripple carry adder" "Carry lookahead adder" "Carry Select Adder"]
+set modules [list "Ripple carry adder" "Carry lookahead adder" "Carry Select Adder" "Carry Bypass Adder"]
 set length [llength $modules]
 
 # for loop to run the simulation for different values of the parameter

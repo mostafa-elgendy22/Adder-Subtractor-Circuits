@@ -1,11 +1,13 @@
 `include "../carry_lookahead_adder/carry_lookahead_adder.v"
 `include "../carry_select_adder/carry_select_adder.v"
+`include "../carry_bypass_adder/carry_bypass_adder.v"
+
 `timescale 1ps/1ps
 
 module generic_testbench;
 
-    localparam DATA_WIDTH = 8;
-    localparam BLOCK_SIZE = 1;
+    localparam DATA_WIDTH = 16;
+    localparam BLOCK_SIZE = 4;
 
     // Input signals' declaration
     reg [DATA_WIDTH - 1:0] A_tb;

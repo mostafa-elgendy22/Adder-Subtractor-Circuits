@@ -4,16 +4,42 @@ Parametrized Verilog implementation of different architectures of adder / subtra
 
 ## Table of Contents
 
-1. [Port Description](#port-description)
-2. [Ripple Carry Adder](#ripple-carry-adder)
-3. [Carry Lookahead Adder](#carry-lookahead-adder)
-4. [Carry Select Adder](#carry-select-adder)
-5. [Functional Verification](#functional-verification)
-6. [References](#references)
+1. [Parameter Description](#parameter-description)
+2. [Port Description](#port-description)
+3. [Ripple Carry Adder](#ripple-carry-adder)
+4. [Carry Lookahead Adder](#carry-lookahead-adder)
+5. [Carry Select Adder](#carry-select-adder)
+6. [Carry Bypass Adder](#carry-bypass-adder)
+7. [Functional Verification](#functional-verification)
+8. [References](#references)
+
+
+## Parameter Description
+
+All the implemented adders are parametrized using the following parameters.
+
+<table>
+    <tr>
+        <th>Parameter</th>
+        <th>Definition</th>
+        <th>Default Value</th>
+    </tr>
+    <tr>
+        <td>DATA_WIDTH</td>
+        <td>The size of the two operands being added</td>
+        <td align="center">16</td>
+    </tr>
+    <tr>
+        <td>BLOCK_SIZE</td>
+        <td>This parameter is used in: carry lookahead adder, carry select adder, and carry bypass adder. It quantifies the number of full adders in one block. It is equivalent to the DATA_WIDTH of each instantiated ripple carry adder module.</td>
+        <td align="center">4</td>
+    </tr>
+</table>
+
 
 ## Port Description
 
-All the implemented adders have the same IO interface but there may some ports that are specific to a certain architecture.
+All the implemented adders have the same IO interface but there may some ports that are specific to a certain architecture (such as the generate and propagate signals).
 
 <table>
     <tr>
@@ -25,13 +51,13 @@ All the implemented adders have the same IO interface but there may some ports t
     <tr>
         <td>A</td>
         <td>input</td>
-        <td>parametrized: DATA_WIDTH (default value is 16)</td>
+        <td>parametrized: DATA_WIDTH</td>
         <td>The first operand of the adder</td>
     </tr>
     <tr>
         <td>B</td>
         <td>input</td>
-        <td>parametrized: DATA_WIDTH (default value is 16)</td>
+        <td>parametrized: DATA_WIDTH</td>
         <td>The second operand of the adder</td>
     </tr>
     <tr>
@@ -55,7 +81,7 @@ All the implemented adders have the same IO interface but there may some ports t
     <tr>
         <td>S</td>
         <td>output</td>
-        <td>parametrized: DATA_WIDTH (default value is 16)</td>
+        <td>parametrized: DATA_WIDTH </td>
         <td>The resulting sum of the two operands.</td>
     </tr>
 </table>
@@ -142,7 +168,7 @@ The following figure shows the architecture of a 32-bit carry lookahead adder wi
 
 <img src="docs/screenshots/32_bit_carry_lookahead_adder.PNG">
 
-The carry generator module is parametrized to support any numeber of adders per stage. This is done using the following approach:
+The carry generator module is parametrized to support any number of adders per stage. This is done using the following approach:
 
 <ol>
     <li>Create a 2D wire array of size (BLOCK_SIZE + 1) * (BLOCK_SIZE + 1) (in this example, BLOCK_SIZE = 4)</li>
@@ -154,7 +180,7 @@ The carry generator module is parametrized to support any numeber of adders per 
 
 Note that the missing cells (wires) are not used.
 
-The following figure shows the output waveform of a 4-bit ripple carry adder. Note that at some operations, overflow occured and overflow flag is asserted which justifies the wrong answers in signed operations.
+The following figure shows the output waveform of a 4-bit carry lookahead adder. Note that at some operations, overflow occured and overflow flag is asserted which justifies the wrong answers in signed operations.
 
 <img src="docs/screenshots/carry_lookahead_adder_tb.PNG">
 
@@ -168,9 +194,24 @@ The following figure shows the block diagram of a 16-bit CSA with BLOCK_SIZE = 4
 
 <img src="docs/screenshots/carry_select_adder.PNG">
 
-The following figure shows the output waveform of a 4-bit ripple carry adder. Note that at some operations, overflow occured and overflow flag is asserted which justifies the wrong answers in signed operations.
+The following figure shows the output waveform of a 4-bit carry select adder. Note that at some operations, overflow occured and overflow flag is asserted which justifies the wrong answers in signed operations.
 
 <img src="docs/screenshots/carry_select_adder_tb.PNG">
+
+## Carry Bypass Adder
+A carry-bypass adder (also known as a carry-skip adder) is an adder implementation that improves on the delay of a ripple-carry adder with little effort compared to other adders. The following figure shows the structure of one block whose size equals five (i.e. BLOCK_SIZE = 5) that builds the carry-bypass adder.
+
+<img src="docs/screenshots/carry_bypass_adder_1.PNG">
+
+The final carry-out of the chain is multiplexed between two cases. If all five-bit position propagates are true, then the entire five-bit adder is propagating. In this case, the carry-out is chosen to be the carry-in. In any other case, the carry-out is chosen to be the output of the five-bit ripple carry adder. This adder is called a carry-bypass adder since there is a possibility that the carry will bypass the entire adder to become the carry-out.
+
+The following figure shows a 20-bit carry-bypass adder with BLOCK_SIZE = 5.
+
+<img src="docs/screenshots/carry_bypass_adder_2.PNG">
+
+The following figure shows the output waveform of a 4-bit carry bypass adder. Note that at some operations, overflow occured and overflow flag is asserted which justifies the wrong answers in signed operations.
+
+<img src="docs/screenshots/carry_bypass_adder_tb.PNG">
 
 ## Functional Verification
 
@@ -181,5 +222,6 @@ All the implemented adders are verified through a generic testbench and a Python
 <ol>
     <li><a href="https://www.sciencedirect.com/book/9780128000564/digital-design-and-computer-architecture">Digital Design and Computer Architecture</a></li>
     <li><a href="https://www.amazon.com/Digital-Design-Introduction-Verilog-HDL/dp/0132774208">Digital Design: With an Introduction to the Verilog HDL</a></li>
+    <li><a href="https://link.springer.com/book/10.1007/978-3-030-37195-1">Handbook of Digital CMOS Technology, Circuits, and Systems</a></li>
     <li><a href="https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/pages/c8/c8s2/c8s2v2/">MIT OCW</a></li>
 </ol>
