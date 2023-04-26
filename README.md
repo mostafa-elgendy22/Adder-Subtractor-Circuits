@@ -32,7 +32,7 @@ All the implemented adders are parametrized using the following parameters.
     </tr>
     <tr>
         <td>BLOCK_SIZE</td>
-        <td>This parameter is used in: carry lookahead adder, carry select adder, and carry bypass adder. It quantifies the number of full adders in one block. It is equivalent to the DATA_WIDTH of each instantiated ripple carry adder module.</td>
+        <td>This parameter is used in: carry lookahead adder, carry select adder, and carry bypass adder. It quantifies the number of full adders in one block (number of bits being added in one block). It is equivalent to the DATA_WIDTH parameter of each instantiated ripple carry adder module which is used to build all the other adders (but with small DATA_WIDTH value).</td>
         <td align="center">4</td>
     </tr>
 </table>
@@ -224,7 +224,9 @@ $$
 Note that the carry notations (indices) in the diagram is not the same as the ones used in the equations.
 
 From the equation of `C5`, we can conclude the following:
+
 <br>
+
 If:
 
 $$
@@ -274,7 +276,7 @@ The following figure shows the output waveform of a 4-bit carry bypass adder. No
 
 ## Functional Verification
 
-All the implemented adders are verified through a generic testbench and a Python environment. The Python environment generates a huge number of test cases (input operands) along with their sum, carry flags, and overflow flags. It also runs the generic testbench several times where each time a single adder architecture is instantiated and tested. The testbench produces the sum, carry flags, overflow flags of all the test cases. Then the Python environment compares all the results with the expected results and confirms that the adder is functioning correctly. The implementation details of the functional verification module can be found at `functional_verification` directory. The verification module can be run by using the `functional_verification/run.tcl` script.
+All the implemented adders are verified through a generic testbench and an automated Python environment. The Python environment generates a huge number of test cases (input operands) along with their sum, carry flags, and overflow flags. It also runs the generic testbench several times where each time a single adder architecture is instantiated and tested. The testbench produces the sum, carry flags, overflow flags of all the test cases. Then the Python environment compares all the results with the expected results and confirms that the adder is functioning correctly. The implementation details of the functional verification module can be found at `functional_verification` directory. The verification module can be run by using the `functional_verification/run.tcl` script.
 
 
 <hr>
@@ -285,6 +287,6 @@ All the implemented adders are verified through a generic testbench and a Python
     <li><a href="https://www.sciencedirect.com/book/9780128000564/digital-design-and-computer-architecture" target="_blank">Digital Design and Computer Architecture</a></li>
     <li><a href="https://www.amazon.com/Digital-Design-Introduction-Verilog-HDL/dp/0132774208" target="_blank">Digital Design: With an Introduction to the Verilog HDL</a></li>
     <li><a href="https://link.springer.com/book/10.1007/978-3-030-37195-1" target="_blank">Handbook of Digital CMOS Technology, Circuits, and Systems</a></li>
-    <li><a href="https://www.youtube.com/@electrontube4284/playlists" target="_blank">Electron Tube</a></li>
+    <li><a href="https://www.youtube.com/playlist?list=PLyWAP9QBe16qnuE-nw0RkUq0IwRkzqyhD" target="_blank">Electron Tube</a></li>
     <li><a href="https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/pages/c8/c8s2/c8s2v2/" target="_blank">MIT OCW</a></li>
 </ol>
