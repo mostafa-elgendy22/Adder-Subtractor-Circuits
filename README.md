@@ -116,7 +116,7 @@ $$
 The carry generated from the i-th full adder in the ripple carry adder:
 
 $$
-C_{i + 1} = G _{i}+ PC_{i}
+C_{i + 1} = G_{i}+ PC_{i}
 $$
 
 It can be shown from the truth table of the full adder that:
