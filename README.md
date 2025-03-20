@@ -122,11 +122,11 @@ $$
 It can be shown from the truth table of the full adder that:
 
 $$
-G_{i} = A_{i}B{i}
+G_{i} = A_{i}B_{i}
 $$
 
 $$
-P_{i} = A_{i} ⊕ B{i}
+P_{i} = A_{i} ⊕ B_{i}
 $$
 
 The generate and propagate logic are produced from the full adder (they are actually the outputs of the first half adder that is part of the full adder). This is illustrated in the following figure.
